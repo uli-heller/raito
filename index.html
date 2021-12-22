@@ -9,7 +9,7 @@
 </head>
 
 <!-- Marked - Markdown to HTML library -->
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="marked.min.js"></script>
 
 <!-- OPTIONAL : Highlight.js - Syntax Highlighting -->
 <!--
@@ -20,7 +20,7 @@
 <!-- Configure me! -->
 <script>
     const config = {
-        root: "", // Website Root URL. Eg: "/raito/" 
+        root: "file:///home/uli/git/forked/railto/", // Website Root URL. Eg: "/raito/" 
         name: "Raito",
         elements: ["navbar", "github_ribbon"],
         errorMessage: "Page not found"
@@ -314,7 +314,7 @@
     };
 
     const renderMD = async (path) => {
-        const res = await fetch(`${config.root}${path}.md`);
+        const res = await fetch(`${config.root}${path}.md`, {mode: 'no-cors'});
         if (res.status != 200) return;
         const markdown = await res.text();
         return marked.parse(markdown,
