@@ -20,10 +20,13 @@
 <!-- Configure me! -->
 <script>
     const config = {
-        root: "", // Website Root URL. Eg: "/raito/" 
+        root: "",                              // Website Root URL. Eg: "/raito/"
         name: "Raito",
         elements: ["navbar", "github_ribbon"],
-        errorMessage: "Page not found"
+        errorMessage: "Page not found",
+        noHash: ["svg","png","jpg"],            // for urls ending with these extensions, don't use hash urls
+	hashBaseUrl:   "#/",
+	noHashBaseUrl: "",
     }
 </script>
 
@@ -313,14 +316,44 @@
         loadContent(window.location.hash);
     };
 
+    const isNoHash = (href) => {
+        const extension = href.replace(/.*\./,'');
+        return config.noHash.indexOf(extension) >= 0;
+    };
+
+    const baseUrl = (href) => {
+        var baseUrl = config.hashBaseUrl;
+        if (isNoHash(href)) {
+            baseUrl = config.noHashBaseUrl;
+        }
+	return baseUrl
+    };
+  
     const renderMD = async (path) => {
         const res = await fetch(`${config.root}${path}.md`, {cache: "no-store"});
         if (res.status != 200) return;
         const markdown = await res.text();
+	// See https://github.com/markedjs/marked/issues/1541
+	// We don't want to use the hash urls for pictures for example.
+	// OK: ![uli.svg](uli.svg) -> http://localhost:8000/uli.svg
+	// KO: ![uli.svg](uli.svg) -> http://localhost:8000/#/uli.svg
+        const renderer = new marked.Renderer();
+        const originalRendererLink = renderer.link.bind(renderer);
+        const originalRendererImage = renderer.image.bind(renderer);
+        renderer.link = (href, title, text) => {
+            href = baseUrl(href) + href;
+            return originalRendererLink(href, title, text);
+        };
+        renderer.image = (href, title, text) => {
+            href = baseUrl(href) + href;
+            return originalRendererImage(href, title, text);
+        };
+
         return marked.parse(markdown,
             {
-                baseUrl: "#/",
+                //baseUrl: '',
                 highlight: (code) => hljs ? hljs.highlightAuto(code).value : code,
+                renderer: renderer
             });
     }
 
