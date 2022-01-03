@@ -20,7 +20,7 @@
 <!-- Configure me! -->
 <script>
     const config = {
-        root: "file:///home/uli/git/forked/railto/", // Website Root URL. Eg: "/raito/" 
+        root: "", // Website Root URL. Eg: "/raito/" 
         name: "Raito",
         elements: ["navbar", "github_ribbon"],
         errorMessage: "Page not found"
@@ -314,7 +314,7 @@
     };
 
     const renderMD = async (path) => {
-        const res = await fetch(`${config.root}${path}.md`, {mode: 'no-cors'});
+        const res = await fetch(`${config.root}${path}.md`, {cache: "no-store"});
         if (res.status != 200) return;
         const markdown = await res.text();
         return marked.parse(markdown,
