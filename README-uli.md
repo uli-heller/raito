@@ -80,3 +80,13 @@ For my fork,
 - you can dive into subfolder-01
 - and from there into subfolder-02
 - and from there into subfolder-03
+
+### Syntax Highlighting
+
+```shell
+if [ "${SHELL}" = "/bin/bash" ]; then
+  echo BASH
+fi  
+```
+
+Difference: "highlight.js" is activated by default!
