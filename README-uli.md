@@ -91,3 +91,51 @@ fi
 ```
 
 Difference: "highlight.js" is activated by default!
+
+### Lists
+
+Markdown
+
+```markdown
+- list item 1
+- list item 2
+- list item 3
+```
+
+Output
+
+- list item 1
+- list item 2
+- list item 3
+
+Difference: Within standard raito, a list shows
+up like this:
+
+![raito list](raito-list.png)
+
+There is a different background, a frame and much more space consumption.
+I don't like it.
+
+### Checklists
+
+Markdown
+
+```markdown
+- [x] Beer
+- [ ] Pancakes
+```
+
+Output
+
+- [x] Beer
+- [ ] Pancakes
+
+Difference
+
+Within standard raito, a checklist shows
+up like this:
+
+![raito checklist](raito-checklist.png)
+
+There is a different background, a frame and much more space consumption.
+I don't like it.

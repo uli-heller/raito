@@ -133,6 +133,7 @@ table tbody tr.active-row {
 }
 
 /* Lists */
+/*
 ul {
     padding-inline-start: 0;
     list-style: none;
@@ -161,12 +162,19 @@ ul ul {
 ul ul li {
     padding-left: 4em;
 }
+*/
 
 /* Checklists */
+/*
 ul:not(.checklist) li::before {
     content: "-";
     margin-right: 0.7em;
     color: var(--border-color);
+}
+*/
+
+ul.checklist {
+    list-style: none;
 }
 
 .checklist input[type=checkbox] {
