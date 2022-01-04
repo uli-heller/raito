@@ -335,7 +335,9 @@
     };
 
     const renderMD = async (path) => {
-        const res = await fetch(`${config.root}${path}.md`, {cache: "no-store"});
+	var append=".md";
+	if (path.slice(-3) == ".md") append="";
+        const res = await fetch(`${config.root}${path}${append}`, {cache: "no-store"});
         if (res.status != 200) return;
         const markdown = await res.text();
 	// See https://github.com/markedjs/marked/issues/1541
@@ -367,7 +369,7 @@
         if (hash == '') hash = "/";
         if (hash[0] == "#") hash = hash.slice(1);
         if (hash.slice(-1) == "/") hash += "README";
-        if (hash.slice(-3) == ".md") hash = hash.slice(0, -3);
+        //if (hash.slice(-3) == ".md") hash = hash.slice(0, -3);
 
         // Load Markdown
         content.innerHTML = await renderMD(hash) || config.errorMessage || ''
@@ -383,8 +385,8 @@
         document.body.classList.add("loaded");
 
         // Clean Hash
-        hash = "#" + hash.replace(/(README$)/, '')
-        window.location.replace(hash);
+        //hash = "#" + hash.replace(/(README$)/, '')
+        //window.location.replace(hash);
     };
 
     const loadElement = async (element) => {
