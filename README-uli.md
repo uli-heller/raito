@@ -9,6 +9,7 @@ Drop these files into your website root:
 
 * index.html
 * marked.min.js
+* raito.css
 * highlight.min.js
 * solarized-dark.min.css
 * navbar.md
