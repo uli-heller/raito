@@ -336,7 +336,9 @@
 	var path = window.location.hash;
 	path = path.replace(/\/[^\/]*$/, '');
 	path = path.replace(/^#\//, '');
-	return path + '/' + href;
+	path = path.replace(/^#/, '');
+	if (path.length > 0)  href = path + '/' + href;
+	return href;
     }
     const createUrlForLink = (href) => {
 	if (href.match(/^[a-z]+:/)) {

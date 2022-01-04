@@ -72,3 +72,10 @@ produces an error message like "Page not found". For my fork, the link works as 
 ### Subfolders
 
 [subfolder-01/README.md](subfolder-01/README.md)
+
+Difference: For standard raito, you cannot dive into hierarchies of folders.
+For my fork,
+
+- you can dive into subfolder-01
+- and from there into subfolder-02
+- and from there into subfolder-03
