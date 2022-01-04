@@ -10,6 +10,10 @@ Made by [Arnaud de Saint Meloir](arnaud.at), inspired by the defunct [MDwiki](ht
 
 Check the [Demo 🔥](https://arnaud.at/raito)
 
+## Uli's Version
+
+This is Uli's fork of RAITO. Look [here](README-uli.md) for the fork's documentation!
+
 ## Install
 Just drop `index.html` in your website root.
 
