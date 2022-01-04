@@ -18,6 +18,8 @@ Drop these files into your website root:
 * logo.svg
 * README.md
 * README-uli.md
+* raito-checklist.png
+* raito-list.png
 
 ## Update
 
