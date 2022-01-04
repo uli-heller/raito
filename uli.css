@@ -4,10 +4,12 @@
     --background-color: white;
     --darker-background-color: #0000000a;
     --lighter-background-color: #fcfcfc;
-    --color-1: #4285f4;
+    --color-1: #ffd000;
     --color-2: #db4437;
     --color-3: #f4b400;
     --color-4: #0f9d58;
+    --color-link: #4285f4;
+    --color-blockquote: var(--darker-background-color);
     --border-radius: 7px;
 }
 
@@ -44,7 +46,7 @@ h5 {
 
 a {
     text-decoration: none;
-    color: var(--color-1);
+    color: var(--color-link);
 }
 
 blockquote a {
@@ -90,8 +92,8 @@ pre {
 blockquote {
     margin: 0;
     padding: 1em 2em !important;
-    background: #4285f4;
-    color: white;
+    background: var(--color-blockquote);
+    color: black;
     overflow: auto;
     border-radius: var(--border-radius);
 }
@@ -110,7 +112,7 @@ table {
 
 table thead tr {
     background-color: var(--color-1);
-    color: #ffffff;
+    color: black;
     text-align: left;
 }
 
@@ -199,7 +201,7 @@ ul.checklist {
     position: relative;
     width: 100%;
     background-color: var(--color-1);
-    color: white;
+    color: black;
     margin: 0;
     position: fixed;
 }
@@ -235,7 +237,7 @@ ul.checklist {
 #navbar a {
     text-decoration: none;
     padding: 0.5em 1em;
-    color: white;
+    color: black;
     font-weight: bold;
 }
 
