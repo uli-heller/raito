@@ -36,3 +36,35 @@ and [solarized-dark.min.css](https://cdnjs.cloudflare.com/ajax/libs/highlight.js
 and store them.
 
 As of 2022-01-04, we are using version 11.3.1 of highlight.min.js.
+
+## Features And Differences
+
+### Relative URL Of An Image
+
+Markdown
+
+```md
+![The logo](logo.svg)
+```
+
+Output
+
+![The logo](logo.svg)
+
+Difference: For standard raito, you have to specify "/logo.svg". Otherwise,
+"#/" will be prepended to the svg link making it impossible to show the image.
+
+### Link To An Image
+
+Markdown
+
+```md
+[The logo](logo.svg)
+````
+
+Output
+
+[The logo](logo.svg)
+
+Difference: For standard raito, the link to the logo is broken. Activating the link
+produces an error message like "Page not found". For my fork, the link works as expected.
