@@ -4,6 +4,9 @@
     --background-color: white;
     --darker-background-color: #0000000a;
     --lighter-background-color: #fcfcfc;
+    --color-top: #ffd000;
+    --color-navbar-background: #fff6cc;
+    --color-navbar-foreground: #665300;
     --color-1: #ffd000;
     --color-2: #db4437;
     --color-3: #f4b400;
@@ -111,7 +114,7 @@ table {
 }
 
 table thead tr {
-    background-color: var(--color-1);
+    background-color: var(--color-top);
     color: black;
     text-align: left;
 }
