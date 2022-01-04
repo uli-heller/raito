@@ -345,7 +345,7 @@
             return originalRendererLink(href, title, text);
         };
         renderer.image = (href, title, text) => {
-            href = baseUrl(href) + href;
+            href = config.noHashBaseUrl + href;
             return originalRendererImage(href, title, text);
         };
 
