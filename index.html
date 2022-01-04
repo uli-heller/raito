@@ -327,11 +327,24 @@
 	return baseUrl
     };
 
+    const addPathToUrl = (href) => {
+	if (href.match(/^[a-z]+:/) || href.slice(0,1) == "/") {
+	    // http://whatever/... or /
+	    // -> don't add the current context
+	    return href;
+	}
+	var path = window.location.hash;
+	path = path.replace(/\/[^\/]*$/, '');
+	path = path.replace(/^#\//, '');
+	return path + '/' + href;
+    }
     const createUrlForLink = (href) => {
 	if (href.match(/^[a-z]+:/)) {
 	    return href;
+	} else if (href.slice(0,1) == "/") {
+	    return baseUrl(href) + href;
 	}
-	return baseUrl(href) + href;
+	return baseUrl(href) + addPathToUrl(href);
     };
 
     const renderMD = async (path) => {
@@ -352,7 +365,7 @@
             return originalRendererLink(href, title, text);
         };
         renderer.image = (href, title, text) => {
-            href = config.noHashBaseUrl + href;
+            href = config.noHashBaseUrl + addPathToUrl(href);
             return originalRendererImage(href, title, text);
         };
 
