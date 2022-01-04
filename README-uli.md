@@ -21,7 +21,7 @@ Drop these files into your website root:
 
 ### marked.min.js
 
-Download [marked.min.js](https://github.com/markedjs/marked/blob/master/marked.min.js) from github
+Download [marked.min.js](https://raw.githubusercontent.com/markedjs/marked/master/marked.min.js) from github
 and store it.
 
 As of 2022-01-04, we are using version v4.0.8 of marked.min.js.
@@ -68,3 +68,7 @@ Output
 
 Difference: For standard raito, the link to the logo is broken. Activating the link
 produces an error message like "Page not found". For my fork, the link works as expected.
+
+### Subfolders
+
+[subfolder-01/README.md](subfolder-01/README.md)
