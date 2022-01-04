@@ -13,13 +13,15 @@ Drop these files into your website root:
 * uli.css
 * highlight.min.js
 * solarized-dark.min.css
+* top.md
 * navbar.md
-* github_ribbon.md
 * logo.svg
 * README.md
 * README-uli.md
 * raito-checklist.png
 * raito-list.png
+* dp-logo_100x69.png
+* dp-text_174x25.png
 
 ## Update
 
