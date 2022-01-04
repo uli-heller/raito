@@ -23,8 +23,8 @@
         elements: ["navbar", "github_ribbon"],
         errorMessage: "Page not found",
         noHash: ["svg","png","jpg"],            // for urls ending with these extensions, don't use hash urls
-	hashBaseUrl:   "#/",
-	noHashBaseUrl: "",
+        hashBaseUrl:   "#/",
+        noHashBaseUrl: "",
     }
 </script>
 
@@ -324,41 +324,42 @@
         if (isNoHash(href)) {
             baseUrl = config.noHashBaseUrl;
         }
-	return baseUrl
+        return baseUrl
     };
 
     const addPathToUrl = (href) => {
-	if (href.match(/^[a-z]+:/) || href.slice(0,1) == "/") {
-	    // http://whatever/... or /
-	    // -> don't add the current context
-	    return href;
-	}
-	var path = window.location.hash;
-	path = path.replace(/\/[^\/]*$/, '');
-	path = path.replace(/^#\//, '');
-	path = path.replace(/^#/, '');
-	if (path.length > 0)  href = path + '/' + href;
-	return href;
-    }
+        if (href.match(/^[a-z]+:/) || href.slice(0,1) == "/") {
+            // http://whatever/... or /
+            // -> don't add the current context
+            return href;
+        }
+        var path = window.location.hash;
+        path = path.replace(/\/[^\/]*$/, '');
+        path = path.replace(/^#\//, '');
+        path = path.replace(/^#/, '');
+        if (path.length > 0)  href = path + '/' + href;
+        return href;
+    };
+  
     const createUrlForLink = (href) => {
-	if (href.match(/^[a-z]+:/)) {
-	    return href;
-	} else if (href.slice(0,1) == "/") {
-	    return baseUrl(href) + href;
-	}
-	return baseUrl(href) + addPathToUrl(href);
+        if (href.match(/^[a-z]+:/)) {
+            return href;
+        } else if (href.slice(0,1) == "/") {
+            return baseUrl(href) + href;
+        }
+        return baseUrl(href) + addPathToUrl(href);
     };
 
     const renderMD = async (path) => {
-	var append=".md";
-	if (path.slice(-3) == ".md") append="";
+        var append=".md";
+        if (path.slice(-3) == ".md") append="";
         const res = await fetch(`${config.root}${path}${append}`, {cache: "no-store"});
         if (res.status != 200) return;
         const markdown = await res.text();
-	// See https://github.com/markedjs/marked/issues/1541
-	// We don't want to use the hash urls for pictures for example.
-	// OK: ![uli.svg](uli.svg) -> http://localhost:8000/uli.svg
-	// KO: ![uli.svg](uli.svg) -> http://localhost:8000/#/uli.svg
+        // See https://github.com/markedjs/marked/issues/1541
+        // We don't want to use the hash urls for pictures for example.
+        // OK: ![uli.svg](uli.svg) -> http://localhost:8000/uli.svg
+        // KO: ![uli.svg](uli.svg) -> http://localhost:8000/#/uli.svg
         const renderer = new marked.Renderer();
         const originalRendererLink = renderer.link.bind(renderer);
         const originalRendererImage = renderer.image.bind(renderer);
