@@ -328,7 +328,14 @@
         }
 	return baseUrl
     };
-  
+
+    const createUrlForLink = (href) => {
+	if (href.match(/^[a-z]+:/)) {
+	    return href;
+	}
+	return baseUrl(href) + href;
+    };
+
     const renderMD = async (path) => {
         const res = await fetch(`${config.root}${path}.md`, {cache: "no-store"});
         if (res.status != 200) return;
@@ -341,7 +348,7 @@
         const originalRendererLink = renderer.link.bind(renderer);
         const originalRendererImage = renderer.image.bind(renderer);
         renderer.link = (href, title, text) => {
-            href = baseUrl(href) + href;
+            href = createUrlForLink(href);
             return originalRendererLink(href, title, text);
         };
         renderer.image = (href, title, text) => {
