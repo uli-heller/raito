@@ -345,7 +345,7 @@
         if (href.match(/^[a-z]+:/)) {
             return href;
         } else if (href.slice(0,1) == "/") {
-            return baseUrl(href) + href;
+            return baseUrl(href) + href.slice(1);
         }
         return baseUrl(href) + addPathToUrl(href);
     };
