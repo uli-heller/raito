@@ -77,7 +77,7 @@ SSH_SIG=
 sha256sum "raito-${VERSION}.tar.xz" >"raito-${VERSION}.tar.xz.sha256"
 test -s "${TMPDIR}/ssh.pub" && {
     SSH_SIG=" and .ssh-sig"
-    ssh-keygen -q -Y sign -n file -f "${TMPDIR}/ssh.pub" <"raito-dp-${VERSION}.tar.xz" >"raito-dp-${VERSION}.tar.xz.ssh-sig"
+    ssh-keygen -q -Y sign -n file -f "${TMPDIR}/ssh.pub" <"raito-${VERSION}.tar.xz" >"raito-${VERSION}.tar.xz.ssh-sig"
 }
 echo "Created raito-${VERSION}.tar.xz and .sha256${SSH_SIG}"
 
