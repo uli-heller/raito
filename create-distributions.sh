@@ -10,6 +10,7 @@ BN="$(basename "$0")"
 TMPDIR="/tmp/${BN}_$(openssl rand -hex 20)_$$~"
 
 SEPARATOR=:
+GITHUB_PUBKEY="$(curl -sq "https://github.com/uli-heller.keys" || exit 0)"
 
 RC=0
 cleanUp () {
@@ -58,11 +59,27 @@ mkdir "${TMPDIR}/raito-dp-${VERSION}"
     done <"${D}/distributions/dp.replace"
 )
 
+test -n "${GITHUB_PUBKEY}" && {
+    echo "${GITHUB_PUBKEY}" >"${TMPDIR}/ssh.pub"
+}
 
+SSH_SIG=
 ( cd "${TMPDIR}"; tar cf - "raito-dp-${VERSION}")|xz -9 >"raito-dp-${VERSION}.tar.xz"
-echo "Created raito-dp-${VERSION}.tar.xz"
+sha256sum "raito-dp-${VERSION}.tar.xz" >"raito-dp-${VERSION}.tar.xz.sha256"
+test -s "${TMPDIR}/ssh.pub" && {
+    SSH_SIG=" and .ssh-sig"
+    ssh-keygen -q -Y sign -n file -f "${TMPDIR}/ssh.pub" <"raito-dp-${VERSION}.tar.xz" >"raito-dp-${VERSION}.tar.xz.ssh-sig"
+}
+echo "Created raito-dp-${VERSION}.tar.xz and .sha256${SSH_SIG}"
+
+SSH_SIG=
 ( cd "${TMPDIR}"; tar cf - "raito-${VERSION}")|xz -9 >"raito-${VERSION}.tar.xz"
-echo "Created raito-${VERSION}.tar.xz"
+sha256sum "raito-${VERSION}.tar.xz" >"raito-${VERSION}.tar.xz.sha256"
+test -s "${TMPDIR}/ssh.pub" && {
+    SSH_SIG=" and .ssh-sig"
+    ssh-keygen -q -Y sign -n file -f "${TMPDIR}/ssh.pub" <"raito-dp-${VERSION}.tar.xz" >"raito-dp-${VERSION}.tar.xz.ssh-sig"
+}
+echo "Created raito-${VERSION}.tar.xz and .sha256${SSH_SIG}"
 
 cleanUp
 exit "${RC}"
