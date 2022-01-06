@@ -9,6 +9,8 @@ BN="$(basename "$0")"
 
 TMPDIR="/tmp/${BN}_$(openssl rand -hex 20)_$$~"
 
+SEPARATOR=:
+
 RC=0
 cleanUp () {
     rm -rf "${TMPDIR}"
@@ -26,23 +28,39 @@ mkdir "${TMPDIR}/raito-${VERSION}"
 
 (
     cd "${D}"
-    tar cf - $(cat "${D}/distributions/common") $(cat "${D}/distributions/standard")
+    tar cf - $(cat "${D}/distributions/common.list") $(cat "${D}/distributions/standard.list")
 )|(
     cd "${TMPDIR}/raito-${VERSION}"
     tar xf -
+    while read line; do
+	SEARCH="$(echo "${line}"|cut -d "${SEPARATOR}" -f1)"
+	REPLACE="$(echo "${line}"|cut -d "${SEPARATOR}" -f2)"
+	for f in *; do
+	    sed -i -e "s/${SEARCH}/${REPLACE}/" "${f}"
+	done
+    done <"${D}/distributions/standard.replace"
 )
 
 mkdir "${TMPDIR}/raito-dp-${VERSION}"
 
 (
     cd "${D}"
-    tar cf - $(cat "${D}/distributions/common") $(cat "${D}/distributions/dp")
+    tar cf - $(cat "${D}/distributions/common.list") $(cat "${D}/distributions/dp.list")
 )|(
     cd "${TMPDIR}/raito-dp-${VERSION}"
     tar xf -
+    while read line; do
+	SEARCH="$(echo "${line}"|cut -d "${SEPARATOR}" -f1)"
+	REPLACE="$(echo "${line}"|cut -d "${SEPARATOR}" -f2)"
+	for f in *; do
+	    sed -i -e "s/${SEARCH}/${REPLACE}/" "${f}"
+	done
+    done <"${D}/distributions/dp.replace"
 )
 
-( cd "${TMPDIR}"; find . )
+
+( cd "${TMPDIR}"; tar cf - "raito-dp-${VERSION}")|xz -9 >raito-dp-${VERSION}.tar.xz
+( cd "${TMPDIR}"; tar cf - "raito-${VERSION}")|xz -9 >raito-${VERSION}.tar.xz
 
 cleanUp
 exit "${RC}"
