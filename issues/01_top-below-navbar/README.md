@@ -3,7 +3,7 @@
 
 ## Affected versions
 
-v0.2
+v0.2 - current
 
 ## Description
 
