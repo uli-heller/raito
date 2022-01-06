@@ -17,6 +17,7 @@ xz -cd "$1"|tar xf -
 
 (
     cd "${BASE}"
+    touch *
     python3 -m http.server 8000 &
     PYTHON3_PID="$!"
     trap "kill -9 ${PYTHON3_PID}" 2 #SIGINT
