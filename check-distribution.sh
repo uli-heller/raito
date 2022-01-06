@@ -1,9 +1,11 @@
-#!/bin/sh
+#!/bin/bash
+#      ^^^^---bash! Using /bin/sh will not to the cleanup after pressing Ctrl-C
 #
 # check-distribution.sh
 #
 # $1 ... .tar.xz file of the distribution
 #
+BN="$(basename "$0")"
 BASE="$(basename "$1" .tar.xz)"
 
 test -e "${BASE}" && {
@@ -15,8 +17,10 @@ xz -cd "$1"|tar xf -
 
 (
     cd "${BASE}"
-    trap '' SIGINT
-    python3 -m http.server 8000
+    python3 -m http.server 8000 &
+    PYTHON3_PID="$!"
+    trap "kill -9 ${PYTHON3_PID}" 2 #SIGINT
+    wait "${PYTHON3_PID}"
 )
 
 rm -rf "${BASE}"
