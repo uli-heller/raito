@@ -21,8 +21,7 @@
     const config = {
         root: "",                              // Website Root URL. Eg: "/raito/"
         name: "Raito",
-        elements: [ "navbar", "top" ],
-        //elements: [ "top", "navbar" ],
+        elements: [ "top", "navbar" ],
         errorMessage: "Page not found",
         noHash: ["svg","png","jpg"],            // for urls ending with these extensions, don't use hash urls
         hashBaseUrl:   "#/",
@@ -38,7 +37,12 @@
     if (typeof hljs == 'undefined') var hljs;
 
     const init = async () => {
-        config.elements.forEach((element) => loadElement(element));
+        // load the elements in reverse order, since
+        // we prepend the main document with the loaded one
+        // the last one will show on top
+        // slice() ... creates a copy of the original array
+        // reverse() ... changes the ordering of the copy
+        config.elements.slice().reverse().forEach((element) => loadElement(element));
         loadContent(window.location.hash);
     };
 
@@ -134,13 +138,14 @@
     };
 
     const loadElement = async (element) => {
+        let elementDiv = document.createElement('div');
+        elementDiv.id = element;
+        document.body.prepend(elementDiv);
+
         const elementHtml = await renderMD(element);
         if (!elementHtml) return
 
-        let elementDiv = document.createElement('div');
         elementDiv.innerHTML = elementHtml;
-        elementDiv.id = element;
-        document.body.prepend(elementDiv);
     };
 
     window.onload = init;
