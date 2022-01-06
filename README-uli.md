@@ -3,6 +3,10 @@ Uli's Fork Of Raito
 
 This is my fork of Raito.
 
+## Issues
+
+[Here](issues/) is a list of open and close issues!
+
 ## Install
 
 Drop these files into your website root:
