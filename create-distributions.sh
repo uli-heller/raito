@@ -59,8 +59,8 @@ mkdir "${TMPDIR}/raito-dp-${VERSION}"
 )
 
 
-( cd "${TMPDIR}"; tar cf - "raito-dp-${VERSION}")|xz -9 >raito-dp-${VERSION}.tar.xz
-( cd "${TMPDIR}"; tar cf - "raito-${VERSION}")|xz -9 >raito-${VERSION}.tar.xz
+( cd "${TMPDIR}"; tar cf - "raito-dp-${VERSION}")|xz -9 >"raito-dp-${VERSION}.tar.xz"
+( cd "${TMPDIR}"; tar cf - "raito-${VERSION}")|xz -9 >"raito-${VERSION}.tar.xz"
 
 cleanUp
 exit "${RC}"
