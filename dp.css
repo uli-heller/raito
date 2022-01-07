@@ -222,7 +222,7 @@ ul.checklist {
 }
 
 /* Navbar */
-#navbar {
+#navbar-dp {
     position:         sticky;
     top: 0;
     width:            100%;
@@ -231,17 +231,7 @@ ul.checklist {
     margin:           0;
 }
 
-/*
-#navbar>ul>li>a>img {
-    max-height: 2em;
-    border-radius: var(--border-radius);
-    margin: -1em;
-    vertical-align: super;
-    margin-right: 1em;
-}
-*/
-
-#navbar ul {
+#navbar-dp ul {
     display: flex;
     list-style: none;
     margin: 0;
@@ -251,27 +241,50 @@ ul.checklist {
     background: inherit;
 }
 
-#navbar li {
+#navbar-dp li {
     margin: 1em 1em 1em 0em;
     //padding: inherit;
     border: none;
 }
 
-#navbar li::before {
+#navba-dpr li::before {
     content: none;
 }
 
-#navbar a {
+#navbar-dp a {
     text-decoration: none;
     //padding: 0.5em 1em;
     color: var(--color-navbar-foreground);
     //font-weight: bold;
 }
 
-#navbar a:hover {
+#navbar-dp a:hover {
     background-color: white;
     filter: brightness(85%);
     border-radius: var(--border-radius);
+}
+
+#footer-dp {
+    position:         sticky;
+    bottom: 0;
+    width:            100%;
+    background-color: var(--color-navbar-background);
+    color:            var(--color-navbar-foreground);
+    margin:           0;
+}
+
+#footer-dp ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    border-radius: inherit;
+    background: inherit;
+}
+
+#footer-dp li {
+    margin: 0.1em 1em 0.1em 0em;
+    //padding: inherit;
+    border: none;
 }
 
 .button {

@@ -2,6 +2,8 @@ config-dp.js
 dp.css
 dp-logo.svg
 dp-text.svg
+footer-dp.md
+navbar-dp.md
 raito-checklist.png
 raito-list.png
 README-uli.md

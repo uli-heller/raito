@@ -10,13 +10,17 @@
 
 <!-- Marked - Markdown to HTML library -->
 <script src="marked.min.js"></script>
-<link rel="stylesheet" type="text/css" href="dp.css"> <!-- raito.css -->
+<link rel="stylesheet" type="text/css" href="dp.css?timestamp=2"> <!-- raito.css -->
 
 <!-- OPTIONAL : Highlight.js - Syntax Highlighting -->
 <script src="highlight.min.js"></script>
 <link rel="stylesheet" href="solarized-dark.min.css">
 
 <!-- Configure me! -->
+<!-- Use something like
+  --     ... src="config-dp.js?timestamp=2022-01-07_08:22:33"
+  -- to force loading a newer version
+-->
 <script src="config-dp.js"></script>
 
 <body>
@@ -32,7 +36,8 @@
         // the last one will show on top
         // slice() ... creates a copy of the original array
         // reverse() ... changes the ordering of the copy
-        config.elements.slice().reverse().forEach((element) => loadElement(element));
+        config.elements.slice().reverse().forEach((element) => loadElement(element, "top"));
+        config.bottom_elements.forEach((element) => loadElement(element, "bottom"));
         loadContent(window.location.hash);
     };
 
@@ -127,16 +132,20 @@
         //window.location.replace(hash);
     };
 
-    const loadElement = async (element) => {
+    const loadElement = async (element, position) => {
         let elementDiv = document.createElement('div');
         elementDiv.id = element;
-        document.body.prepend(elementDiv);
+        if (position === "top") {
+            document.body.prepend(elementDiv);
+        } else {
+            document.body.append(elementDiv);
+        }
 
-	var elementHtml;
-	if (isNoHash(element)) {
-	    const response = await fetch(`${config.root}${element}`, {cache: "no-store"});
+        var elementHtml;
+        if (isNoHash(element)) {
+            const response = await fetch(`${config.root}${element}`, {cache: "no-store"});
             elementHtml = await response.text();
-	} else {
+        } else {
             elementHtml = await renderMD(element);
         }
         if (!elementHtml) return

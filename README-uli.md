@@ -9,23 +9,13 @@ This is my fork of Raito.
 
 ## Install
 
-Drop these files into your website root:
-
-* index.html
-* marked.min.js
-* raito.css
-* dp.css
-* highlight.min.js
-* solarized-dark.min.css
-* top.html
-* navbar.md
-* logo.svg
-* README.md
-* README-uli.md
-* raito-checklist.png
-* raito-list.png
-* dp-logo_100x69.png
-* dp-text_174x25.png
+- Execute `create-distributions.sh`
+- Select
+    - raito-dp-(version).tar.xz ... for my layout
+    - raito-(version).tar.xz ... for the standard layout
+- Extract these into your website root, probably
+  by executing something like
+  `xz -cd raito*tar.xz|(cd website-root && tar --strip-components=1 -xf -)`
 
 ## Update
 

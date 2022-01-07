@@ -236,6 +236,15 @@ ul:not(.checklist) li::before {
     border-radius: var(--border-radius);
 }
 
+#footer {
+    position: relative;
+    width: 100%;
+    background-color: var(--color-1);
+    color: white;
+    margin: 0;
+    position: fixed;
+}
+
 .button {
     margin: 0;
     padding: 1em 2em !important;
