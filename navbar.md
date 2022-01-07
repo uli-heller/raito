@@ -1,4 +1,5 @@
 - [README.md](/README.md)
 - [README-uli.md](/README-uli.md)
+- [CHANGELOG.md](/CHANGELOG.md)
 - [Issues](/issues/)
-- [Examples](/examples)
+- [Examples](/examples.md)
