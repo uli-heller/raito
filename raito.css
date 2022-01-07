@@ -237,6 +237,8 @@ ul:not(.checklist) li::before {
 }
 
 #footer {
+    position:         sticky;
+    bottom: 0;
     position: relative;
     width: 100%;
     background-color: var(--color-1);
