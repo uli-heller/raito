@@ -132,7 +132,13 @@
         elementDiv.id = element;
         document.body.prepend(elementDiv);
 
-        const elementHtml = await renderMD(element);
+	var elementHtml;
+	if (isNoHash(element)) {
+	    const response = await fetch(`${config.root}${element}`, {cache: "no-store"});
+            elementHtml = await response.text();
+	} else {
+            elementHtml = await renderMD(element);
+        }
         if (!elementHtml) return
 
         elementDiv.innerHTML = elementHtml;
