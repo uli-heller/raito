@@ -11,4 +11,4 @@ v0.6pre
 v0.5
 ----
 
-Start of the changelog, no known history
+- Start of the changelog, no known history
