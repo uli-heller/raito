@@ -36,7 +36,7 @@
         // the last one will show on top
         // slice() ... creates a copy of the original array
         // reverse() ... changes the ordering of the copy
-        config.elements.slice().reverse().forEach((element) => loadElement(element, "top"));
+        config.top_elements.slice().reverse().forEach((element) => loadElement(element, "top"));
         config.bottom_elements.forEach((element) => loadElement(element, "bottom"));
         loadContent(window.location.hash);
     };
