@@ -3,7 +3,7 @@ const config = {
         name: "Raito",
         elements: [ "navbar" ],
         errorMessage: "Page not found",
-        noHash: ["svg","png","jpg"],            // for urls ending with these extensions, don't use hash urls
+        noHash: ["svg","png","jpg","html"],            // for urls ending with these extensions, don't use hash urls
         hashBaseUrl:   "#/",
         noHashBaseUrl: "",
 }
