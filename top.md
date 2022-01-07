@@ -1,8 +1,8 @@
 <header role="banner">
   <div id="logo">
-    <img src="dp-logo_100x69.png" alt="DP Logo" />
+    <img src="dp-logo.svg" alt="DP Logo" style="width:100px"/>
     <br/>
-    <img src="dp-text_174x25.png" alt="DP Text" />
+    <img src="dp-text.svg" alt="DP Text" style="width:174px"/>
   </div>
 
   <div id="title">
