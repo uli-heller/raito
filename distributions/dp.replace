@@ -1,1 +1,2 @@
-[^-]logo.svg:dp-logo.svg
+"logo.svg":"dp-logo.svg"
+(logo.svg):(dp-logo.svg)
