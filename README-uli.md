@@ -17,7 +17,7 @@ Drop these files into your website root:
 * dp.css
 * highlight.min.js
 * solarized-dark.min.css
-* top.md
+* top.html
 * navbar.md
 * logo.svg
 * README.md
