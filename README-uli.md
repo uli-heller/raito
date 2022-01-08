@@ -25,7 +25,7 @@ This is my fork of Raito.
 - Execute `create-distributions.sh` -> "raito-v0.5-11-g71a7c41.tar.xz" and "raito-dp-v0.5-11-g71a7c41.tar.xz"
 - Test prerelease using my layout: `./check-distribution.sh raito-dp-v*xz` and [localhost:8000](http://localhost:8000)
 - Test prerelease using standard layout: `./check-distribution.sh raito-v*xz` and [localhost:8000](http://localhost:8000)
-- Clean again: `git clean -ndx`, verify outout, `git clean -fdx`
+- Clean again: `git clean -ndx`, verify output, `git clean -fdx`
 - Merge to main: `git checkout main && git merge develop`
 - Show at the last version tag: `git describe --tags`  -> `v0.5-11-g71a7c41`
 - Select the next version tag: "v0.6"
