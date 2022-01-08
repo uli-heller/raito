@@ -1,2 +1,3 @@
 "logo.svg":"dp-logo.svg"
 (logo.svg):(dp-logo.svg)
+(\\([0-9]*_[^)]*\\)):\\\\1
