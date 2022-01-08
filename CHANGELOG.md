@@ -1,8 +1,8 @@
 CHANGELOG
 =========
 
-v0.6pre
--------
+v0.6
+----
 
 - Eliminate links to README-uli.md from the standard distribution
 - Renamed top.md -> top.html since it contains html anyways
