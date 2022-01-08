@@ -1,8 +1,8 @@
 CHANGELOG
 =========
 
-v0.7pre
--------
+v0.7
+----
 
 - Updated marked.js from 4.0.8 to 4.0.9
 - Updated highlight.js from 11.3.1 to 11.4.0
