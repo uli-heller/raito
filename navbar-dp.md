@@ -1,5 +1,6 @@
 - [README.md](/README.md)
 - [README-uli.md](/README-uli.md)
+- [INSTALL.md](/INSTALL.md)
 - [CHANGELOG.md](/CHANGELOG.md)
 - [LICENSE.md](/LICENSE.md)
 - [Issues](/issues/)

@@ -1,3 +1,4 @@
 - [README.md](/README.md)
+- [INSTALL.md](/INSTALL.md)
 - [CHANGELOG.md](/CHANGELOG.md)
 - [Examples](/examples.md)
