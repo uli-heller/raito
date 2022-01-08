@@ -37,7 +37,7 @@ This is my fork of Raito.
 - Test release using my layout: `./check-distribution.sh raito-dp-v*xz` and [localhost:8000](http://localhost:8000)
 - Test release using standard layout: `./check-distribution.sh raito-v*xz` and [localhost:8000](http://localhost:8000)
 - Publish: `git push; git push --tags`
-- Upload the artifacts to [GITHUB](https://...) and create a release from the tag
+- Upload the artifacts to [GITHUB](https://github.com/uli-heller/raito/tags) and create a release from the tag
 - Prepare "develop" for the next cycle:
     - `git checkout develop`
     - `git merge main`
