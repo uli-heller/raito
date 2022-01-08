@@ -231,6 +231,10 @@ ul.checklist {
     margin:           0;
 }
 
+#navbar-dp h1 {
+    display: none;
+}
+
 #navbar-dp ul {
     display: flex;
     list-style: none;
@@ -240,6 +244,14 @@ ul.checklist {
     border-radius: inherit;
     background: inherit;
     padding-left: 1em;
+}
+
+#navbar-dp ul:first-of-type {
+    float: left;
+}
+
+#navbar-dp ul:last-of-type {
+    float: right;
 }
 
 #navbar-dp li {

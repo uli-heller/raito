@@ -5,4 +5,10 @@
 - [CHANGELOG.md](/CHANGELOG.md)
 - [LICENSE.md](/LICENSE.md)
 - [Issues](/issues/)
+
+# Right
+
 - [Examples](/examples.md)
+
+<!-- Ugly, but without the diff below, the navbar isn't drawn correctly -->
+<div style="clear: both;"></div>

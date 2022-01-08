@@ -4,6 +4,7 @@ CHANGELOG
 v0.8pre
 -------
 
+- Added support right aligned navbar entries
 - Fixed left margin of nevbar and footer
 - Removed illegal comments '//' from css
 - Created separate description [RELEASE.md](RELEASE.md)
