@@ -22,7 +22,7 @@ This is my fork of Raito.
 - Do some tests by running `./check-this.sh` and heading your browser to [localhost:8000](http://localhost:8000)
 - Clean your folder: `git clean -ndx`, verify outout, `git clean -fdx`
 - Test again by running `./check-this.sh` and heading your browser to [localhost:8000](http://localhost:8000)
-- Execute `create-distributions.sh` -> "raito-v0.5-11-g71a7c41.tar.xz" and "raito-dp-v0.5-11-g71a7c41.tar.xz"
+- Execute `./create-distributions.sh` -> "raito-v0.5-11-g71a7c41.tar.xz" and "raito-dp-v0.5-11-g71a7c41.tar.xz"
 - Test prerelease using my layout: `./check-distribution.sh raito-dp-v*xz` and [localhost:8000](http://localhost:8000)
 - Test prerelease using standard layout: `./check-distribution.sh raito-v*xz` and [localhost:8000](http://localhost:8000)
 - Clean again: `git clean -ndx`, verify output, `git clean -fdx`
@@ -33,7 +33,7 @@ This is my fork of Raito.
 - Commit: `git commit -m "Preparing v0.6" .`
 - Tag: `git tag v0.6`
 - Test again by running `./check-this.sh` and heading your browser to [localhost:8000](http://localhost:8000)
-- Execute `create-distributions.sh` -> "raito-v0.6.tar.xz" and "raito-dp-v0.6.tar.xz"
+- Execute `./create-distributions.sh` -> "raito-v0.6.tar.xz" and "raito-dp-v0.6.tar.xz"
 - Test release using my layout: `./check-distribution.sh raito-dp-v*xz` and [localhost:8000](http://localhost:8000)
 - Test release using standard layout: `./check-distribution.sh raito-v*xz` and [localhost:8000](http://localhost:8000)
 - Publish: `git push; git push --tags`
