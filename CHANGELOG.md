@@ -4,6 +4,8 @@ CHANGELOG
 v0.7pre
 -------
 
+- Updated marked.js from 4.0.8 to 4.0.9
+- Updated highlight.js from 11.3.1 to 11.4.0
 - Added description [INSTALL.md](INSTALL.md) on how to verify and use the distribution
 - Added [LICENSE.md](LICENSE.md)
 - Added issue [04 - Some Experiments With "normalize.css" And "reset.css"](/issues/04_reset-css/) and did some examinations on it

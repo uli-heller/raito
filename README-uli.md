@@ -48,19 +48,27 @@ on how to install a distribution.
 Download [marked.min.js](https://raw.githubusercontent.com/markedjs/marked/master/marked.min.js) from github
 and store it.
 
-As of 2022-01-04, we are using version v4.0.8 of marked.min.js.
+As of 2022-01-08, we are using version v4.0.9 of marked.min.js.
+
+```
+$ curl -so marked.min.js https://raw.githubusercontent.com/markedjs/marked/master/marked.min.js
+```
 
 ### highlight.min.js
 
 Determine the current version of highlight.js via [Github](https://github.com/highlightjs/highlight.js/releases)
-or [highlightjs.org](https://highlightjs.org/): 11.3.1
+or [highlightjs.org](https://highlightjs.org/): 11.4.0
 
-Download [highlight.min.js](https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js)
-and [solarized-dark.min.css](https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/base16/solarized-dark.min.css)
+Download [highlight.min.js](https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js)
+and [solarized-dark.min.css](https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/base16/solarized-dark.min.css)
 and store them.
 
-As of 2022-01-04, we are using version 11.3.1 of highlight.min.js.
+As of 2022-01-08, we are using version 11.4.0 of highlight.min.js.
 
+```
+$ curl -so highlight.min.js https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js
+$ curl -so solarized-dark.min.css https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/base16/solarized-dark.min.css
+```
 ## Features And Differences
 
 ### Relative URL Of An Image
