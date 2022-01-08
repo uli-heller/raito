@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+v0.7pre
+-------
+
+- Fixed description on how to do a release
+
 v0.6
 ----
 
