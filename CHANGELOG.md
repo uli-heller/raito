@@ -4,6 +4,8 @@ CHANGELOG
 v0.8pre
 -------
 
+- Fixed left margin of nevbar and footer
+- Removed illegal comments '//' from css
 - Created separate description [RELEASE.md](RELEASE.md)
 
 v0.7
