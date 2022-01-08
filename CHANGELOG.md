@@ -4,6 +4,7 @@ CHANGELOG
 v0.7pre
 -------
 
+- Added issue [04 - Some Experiments With "normalize.css" And "reset.css"](/issues/04_reset-css/) and did some examinations on it
 - Added issue [03 - Wasted Space On Top Of Every Page](/issues/03_wasted-space/) and fixed it
 - Fixed description on how to do a release
 
