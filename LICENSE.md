@@ -18,7 +18,7 @@ Maybe I will remove them so I can use the MIT license for the whole thing?
 
 License                                                                              | Used | Remark
 -------------------------------------------------------------------------------------|------|---------------
-unclear                                                                              | Yes  | raito upstream
+unclear                                                                              | Yes  | [raito upstream](https://github.com/arnaudsm/raito)
 MIT?                                                                                 | Yes  | raito (this fork)
 [BSD 3-Clause License](https://github.com/highlightjs/highlight.js/blob/main/LICENSE)| Yes  | [highlight.js](https://github.com/highlightjs/highlight.js)
 [MIT Derivate](https://github.com/markedjs/marked/blob/master/LICENSE.md)            | Yes  | [marked.js](https://github.com/markedjs/marked)
