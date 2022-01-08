@@ -1,3 +1,2 @@
-- (c) 2022 daemons point GmbH
-- Zahn-Nopper-Str. 1-3
-- 70439 Stuttgart
+- Implemented in 2022
+- by Uli Heller
