@@ -4,6 +4,7 @@ CHANGELOG
 v0.7pre
 -------
 
+- Added issue [03 - Wasted Space On Top Of Every Page](/issues/03_wasted-space/)
 - Fixed description on how to do a release
 
 v0.6
