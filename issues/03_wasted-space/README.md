@@ -6,3 +6,7 @@ we waste a lot of space on top of the page. This is especially
 true for Uli's layout:
 
 ![standard layout](standard-layout.png)   ![dp layout](dp-layout.png)
+
+There is a fix for v0.7:
+
+![fixed layout](fixed.png)

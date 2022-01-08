@@ -93,10 +93,10 @@ img {
 }
 
 #content {
-    //max-width: 35rem;
+    /* max-width: 35rem; */
+    /* padding: top/bottom - left/right */
     padding: 0 1em;
     margin: auto;
-    padding-top: 5em;
 }
 
 :not(pre)>code {
