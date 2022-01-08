@@ -49,6 +49,7 @@ Onto the details:
     - README-uli.md
     - issues
     - CHANGELOG.md
+    - INSTALL.md
     - LICENSE.md
     - ... and probably much more
 - Keep essentials
