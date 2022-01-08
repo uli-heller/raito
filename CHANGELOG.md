@@ -4,7 +4,7 @@ CHANGELOG
 v0.8pre
 -------
 
-- No changes yet
+- Created separate description [RELEASE.md](RELEASE.md)
 
 v0.7
 ----

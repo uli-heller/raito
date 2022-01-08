@@ -51,6 +51,7 @@ Onto the details:
     - CHANGELOG.md
     - INSTALL.md
     - LICENSE.md
+    - RELEASE.md
     - ... and probably much more
 - Keep essentials
     - index.html
