@@ -8,6 +8,7 @@ v0.6
 - Renamed top.md -> top.html since it contains html anyways
 - Added CHANGELOG (this file)
 - Adder footer
+- Added description on how to do a release
 
 v0.5
 ----
