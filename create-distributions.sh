@@ -2,6 +2,7 @@
 #
 # create-distributions.sh
 #
+#set -x
 set -e
 D="$(dirname "$0")"
 D="$(cd "${D}" && pwd)"
@@ -33,13 +34,15 @@ mkdir "${TMPDIR}/raito-${VERSION}"
 )|(
     cd "${TMPDIR}/raito-${VERSION}"
     tar xf -
-    while read line; do
+    grep -v "^#" "${D}/distributions/standard.replace" | while read line; do
 	SEARCH="$(echo "${line}"|cut -d "${SEPARATOR}" -f1)"
 	REPLACE="$(echo "${line}"|cut -d "${SEPARATOR}" -f2)"
-	for f in *; do
-	    sed -i -e "s/${SEARCH}/${REPLACE}/" "${f}"
+	FILES="$(echo "${line}"|cut -d "${SEPARATOR}" -f3)"
+	test -z "${FILES}" && FILES="."
+	for f in $(find ${FILES} -type f); do
+	    sed -i -e "s/${SEARCH}/${REPLACE}/g" "${f}"
 	done
-    done <"${D}/distributions/standard.replace"
+    done
 )
 
 mkdir "${TMPDIR}/raito-dp-${VERSION}"
@@ -50,13 +53,15 @@ mkdir "${TMPDIR}/raito-dp-${VERSION}"
 )|(
     cd "${TMPDIR}/raito-dp-${VERSION}"
     tar xf -
-    while read line; do
+    grep -v "^#" "${D}/distributions/dp.replace" | while read line; do
 	SEARCH="$(echo "${line}"|cut -d "${SEPARATOR}" -f1)"
 	REPLACE="$(echo "${line}"|cut -d "${SEPARATOR}" -f2)"
-	for f in *; do
-	    sed -i -e "s/${SEARCH}/${REPLACE}/" "${f}"
+	FILES="$(echo "${line}"|cut -d "${SEPARATOR}" -f3)"
+	test -z "${FILES}" && FILES="."
+	for f in $(find ${FILES} -type f); do
+	    sed -i -e "s/${SEARCH}/${REPLACE}/g" "${f}"
 	done
-    done <"${D}/distributions/dp.replace"
+    done
 )
 
 test -n "${GITHUB_PUBKEY}" && {

@@ -9,6 +9,7 @@ v0.6
 - Added CHANGELOG (this file)
 - Adder footer
 - Added description on how to do a release
+- Fixed dead links related to issues
 
 v0.5
 ----

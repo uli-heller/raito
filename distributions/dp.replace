@@ -1,3 +1,7 @@
-"logo.svg":"dp-logo.svg"
-(logo.svg):(dp-logo.svg)
-(\\([0-9]*_[^)]*\\)):\\\\1
+# sed -e 's,\(["(]\)logo.svg\(["]\),\1dp-logo.svg\2,'
+# Unclear: Why do we need so much escaping? Why different for
+# field1 and field2?
+\\(["(]\\)logo.svg\\([")]\\):\\\\1dp-logo.svg\\\\2
+\\[::issues/README.md
+\\]::issues/README.md
+([^)]*)::issues/README.md
