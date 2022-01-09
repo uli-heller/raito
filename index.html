@@ -120,6 +120,28 @@
                 checkbox.disabled = "";
                 checkbox.parentElement.parentElement.classList.add("checklist");
             });
+
+	// navbar
+	const navbar_id = config.navbar;
+	if (navbar_id) {
+	    const navbar = document.getElementById(navbar_id);
+	    var navbar_uls = navbar.querySelectorAll("ul");
+	    while (navbar_uls.length < 2) {
+		const ul = document.createElement('ul');
+		const li = document.createElement('li');
+		ul.appendChild(li);
+		navbar.appendChild(ul);
+		navbar_uls = navbar.querySelectorAll("ul");
+	    }
+	    const navbar_clear = document.getElementsByClassName("clear");
+	    if (navbar_clear.length <= 0) {
+		const clear = document.createElement('div')
+		clear.classList.add("clear");
+		clear.style.clear = 'both';
+		navbar.appendChild(clear);
+	    }
+	}
+
         document.title = (document.querySelectorAll("h1")[0]?.innerText || "") + " | " + config.name || "";
         document.body.classList.add("loaded");
 

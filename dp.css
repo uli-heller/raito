@@ -254,13 +254,19 @@ ul.checklist {
     float: right;
 }
 
+/*
+#navbar-dp .clear {
+    clear: both;
+}
+*/
+
 #navbar-dp li {
     margin: 1em 1em 1em 0em;
     /*padding: inherit;*/
     border: none;
 }
 
-#navba-dpr li::before {
+#navbar-dp li::before {
     content: none;
 }
 
