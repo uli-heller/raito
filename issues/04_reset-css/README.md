@@ -15,6 +15,8 @@ by the user agent stylesheet:
 
 Idea: We might get rid of these by using "normalize.css" or "reset.css".
 
+Update 2022-01-09: I fixed the issue within v0.8 by setting the padding.
+
 Integration
 -----------
 

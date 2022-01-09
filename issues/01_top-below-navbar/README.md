@@ -3,7 +3,7 @@
 
 ## Affected versions
 
-v0.2 - current
+v0.2 - <v0.3
 
 ## Description
 
@@ -21,3 +21,6 @@ There is an experimental fix in version v0.3.
 We "reserve" the place of the elements within
 the synchronous part of the code and load it
 asynchronously later.
+
+Update 2022-01-09: I did not observe the issue any more, so
+it is probably fixed!
