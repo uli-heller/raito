@@ -10,5 +10,9 @@
 
 - [Examples](/examples.md)
 
-<!-- Ugly, but without the diff below, the navbar isn't drawn correctly -->
+<!-- Ugly, but without the div below, the navbar isn't drawn correctly
+     - Has to exist within this file at the moment
+     - Moving it to a separate element like "navbar-left-right.html"
+       does not work
+ -->
 <div style="clear: both;"></div>
