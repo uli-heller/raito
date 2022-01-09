@@ -4,7 +4,7 @@
     <br/>
     <img src="dp-text.svg" alt="DP Text" style="width:174px"/>
     <br/>
-    <a href="#" onclick="hideTop()" id="hide">&Uarr;</a>
+    <a href="#" onclick="hideTop(event);" id="hide">&Uarr;</a>
   </div>
 
   <div id="title">
@@ -15,16 +15,18 @@
 </header>
 
 <script>
-  function hideTop() {
+  function hideTop(e) {
     var top=document.getElementById("top.html");
     var unhide=document.getElementById("unhide");
     top.style.display = "none";
     unhide.style.display = "block";
+    e.preventDefault();
   }
-  function showTop() {
+  function showTop(e) {
     var top=document.getElementById("top.html");
     var unhide=document.getElementById("unhide");
     top.style.display = "block";
     unhide.style.display = "none";
+    e.preventDefault();
   }
 </script>
