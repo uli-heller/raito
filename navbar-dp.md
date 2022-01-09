@@ -14,5 +14,6 @@
      - Has to exist within this file at the moment
      - Moving it to a separate element like "navbar-left-right.html"
        does not work
+     - If you don't want a right entry, you'll have to use "- [ ]()"
  -->
 <div style="clear: both;"></div>
