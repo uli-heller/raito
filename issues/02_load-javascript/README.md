@@ -99,18 +99,106 @@ index 29e0dc2..02404a2 100644
 
 ### config-dp.js And hide.html
 
-Same versions as in first trial.
+Same versions as in first try.
 
 ### Outcome
 
 Lots of stange error messages show up within the browser console.
 It doesn't work!
 
+Final Try Based On StackOverflow
+----------------------------------
+
+### index.html
+
+See [StackOverflow][001]:
+
+```diff
+diff --git a/index.html b/index.html
+index 29e0dc2..e004337 100644
+--- a/index.html
++++ b/index.html
+@@ -17,7 +17,7 @@
+ <link rel="stylesheet" href="solarized-dark.min.css">
+ 
+ <!-- Configure me! -->
+-<script src="config-dp.js?raito_version=v0.8"></script>
++<script src="config-dp.js?raito_version=v0.9pre"></script>
+ 
+ <body>
+     <div id="content"></div>
+@@ -130,6 +130,35 @@
+             });
+     }
+ 
++    function nodeScriptReplace(node) {
++        if ( nodeScriptIs(node) === true ) {
++                node.parentNode.replaceChild( nodeScriptClone(node) , node );
++        }
++        else {
++                var i = -1, children = node.childNodes;
++                while ( ++i < children.length ) {
++                      nodeScriptReplace( children[i] );
++                }
++        }
++
++        return node;
++    }
++
++    function nodeScriptClone(node){
++        var script  = document.createElement("script");
++        script.text = node.innerHTML;
++
++        var i = -1, attrs = node.attributes, attr;
++        while ( ++i < attrs.length ) {
++              script.setAttribute( (attr = attrs[i]).name, attr.value );
++        }
++        return script;
++    }
++
++    function nodeScriptIs(node) {
++        return node.tagName === 'SCRIPT';
++    }
++
+     const loadContent = async (hash) => {
+         // Hash routing
+         if (hash == '') hash = "/";
+@@ -139,6 +168,7 @@
+ 
+         // Load Markdown
+         content.innerHTML = await renderMD(hash) || config.errorMessage || ''
++        nodeScriptReplace(content);
+ 
+         // Reformat document
+         document
+@@ -175,6 +205,7 @@
+         if (!elementHtml) return
+ 
+         elementDiv.innerHTML = elementHtml;
++        nodeScriptReplace(elementDiv);
+ 
+         if (isNavbar(element)) {
+             handleNavbar(element)
+```
+
+### config-dp.js And hide.html
+
+Same versions as in first try.
+
+### Outcome
+
+It works OK! But it looks ugly - we need some styling!
+
+![hide](hide-button.png)
+
+![unhide](unhide-button.png)
+
+
 Links And References
 -----
 
-- [StackOverflow: Executing "script" elements inserted with .innerHTML][001]
-- [StackOverflow: Can scripts be inserted with innerHTML?][002]
+- [StackOverflow: Can scripts be inserted with innerHTML?][001]
+- [StackOverflow: Executing "script" elements inserted with .innerHTML][002]
 
 [001]: https://stackoverflow.com/questions/2592092/executing-script-elements-inserted-with-innerhtml
 [002]: https://stackoverflow.com/questions/1197575/can-scripts-be-inserted-with-innerhtml

@@ -4,7 +4,7 @@ CHANGELOG
 v0.9pre
 -------
 
-- No changes so far
+- Fix for [02 - Load Javascript Within Element](02_load-javascript/)
 
 v0.8
 ----

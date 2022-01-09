@@ -1,0 +1,15 @@
+<script>
+  function toggleTop() {
+    var top=document.getElementById("top.html");
+    var hide=document.getElementById("hide");
+    if (top.style.display === "none") {
+	top.style.display = "block";
+	hide.innerText = "Hide";
+    } else {
+	top.style.display = "none";
+	hide.innerText = "Unhide";
+    }
+  }
+</script>
+
+<button id="hide" onclick="toggleTop()">Hide</button>

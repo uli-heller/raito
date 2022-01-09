@@ -1,7 +1,7 @@
 const config = {
         root: "",                              // Website Root URL. Eg: "/raito/"
         name: "Raito",
-        top_elements:       [ "top.html", "navbar-dp" ],
+        top_elements:       [ "top.html", "navbar-dp", "hide.html" ],
         bottom_elements:    [ "footer-dp" ],
         navbar_element_ids: [ "navbar-dp" ],
         errorMessage: "Page not found",
