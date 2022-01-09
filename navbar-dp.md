@@ -1,4 +1,4 @@
-- <a href="#" onclick="showTop(event);" id="unhide" style="display: none;">&Darr;</a>
+- <a href="#" onclick="toggleTop(event);" id="show_hide">&Uarr;</a>
 - [README.md](/README.md)
 - [README-uli.md](/README-uli.md)
 - [INSTALL.md](/INSTALL.md)
