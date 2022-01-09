@@ -193,6 +193,12 @@ It works OK! But it looks ugly - we need some styling!
 
 ![unhide](unhide-button.png)
 
+Here a first improvement:
+
+![hide2](hide-button2.png)
+
+![unhide2](unhide-button2.png)
+
 
 Links And References
 -----
