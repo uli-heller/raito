@@ -12,8 +12,10 @@ The javascript function within hide.html cannot be
 executed. Moving the function into index.html makes
 this work ok!
 
-config-dp.js
+First Trials
 ------------
+
+### config-dp.js
 
 ```html
 const config = {
@@ -28,8 +30,7 @@ const config = {
 
 ```
 
-hide.html
----------
+### hide.html
 
 ```html
 <script>
@@ -46,6 +47,70 @@ hide.html
 <button onclick="toggleTop()">Hide</button>
 ```
 
+Another Try Based On StackOverflow
+----------------------------------
 
+### index.html
 
+See [StackOverflow][002]:
 
+```diff
+diff --git a/index.html b/index.html
+index 29e0dc2..02404a2 100644
+--- a/index.html
++++ b/index.html
+@@ -130,6 +130,17 @@
+             });
+     }
+ 
++    const setInnerHTML = function(elm, html) {
++      elm.innerHTML = html;
++      Array.from(elm.querySelectorAll("script")).forEach( oldScript => {
++        const newScript = document.createElement("script");
++        Array.from(oldScript.attributes)
++          .forEach( attr => newScript.setAttribute(attr.name, attr.value) );
++        newScript.appendChild(document.createTextNode(oldScript.innerHTML));
++        oldScript.parentNode.replaceChild(newScript, oldScript);
++      });
++    }
++
+     const loadContent = async (hash) => {
+         // Hash routing
+         if (hash == '') hash = "/";
+@@ -138,7 +149,7 @@
+         //if (hash.slice(-3) == ".md") hash = hash.slice(0, -3);
+ 
+         // Load Markdown
+-        content.innerHTML = await renderMD(hash) || config.errorMessage || ''
++        setInnerHTML(content, await renderMD(hash) || config.errorMessage || '');
+ 
+         // Reformat document
+         document
+@@ -174,7 +185,7 @@
+         }
+         if (!elementHtml) return
+ 
+-        elementDiv.innerHTML = elementHtml;
++        setInnerHTML(elementDiv, elementHtml);
+ 
+        if (isNavbar(element)) {
+            handleNavbar(element)
+```
+
+### config-dp.js And hide.html
+
+Same versions as in first trial.
+
+### Outcome
+
+Lots of stange error messages show up within the browser console.
+It doesn't work!
+
+Links And References
+-----
+
+- [StackOverflow: Executing <script> elements inserted with .innerHTML][001]
+- [StackOverflow: Can scripts be inserted with innerHTML?][002]
+
+[001]: https://stackoverflow.com/questions/2592092/executing-script-elements-inserted-with-innerhtml
+[002]: https://stackoverflow.com/questions/1197575/can-scripts-be-inserted-with-innerhtml
