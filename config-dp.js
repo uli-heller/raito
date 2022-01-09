@@ -3,6 +3,7 @@ const config = {
         name: "Raito",
         top_elements: [ "top.html", "navbar-dp" ],
         bottom_elements: [ "footer-dp" ],
+        navbar:          "navbar-dp",
         errorMessage: "Page not found",
         noHash: ["svg","png","jpg", "html"],            // for urls ending with these extensions, don't use hash urls
         hashBaseUrl:   "#/",
