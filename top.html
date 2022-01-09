@@ -3,6 +3,8 @@
     <img src="dp-logo.svg" alt="DP Logo" style="width:100px"/>
     <br/>
     <img src="dp-text.svg" alt="DP Text" style="width:174px"/>
+    <br/>
+    <a href="#" onclick="hideTop()" id="hide">&Uarr;</a>
   </div>
 
   <div id="title">
@@ -11,3 +13,18 @@
     </hgroup>
   </div>
 </header>
+
+<script>
+  function hideTop() {
+    var top=document.getElementById("top.html");
+    var unhide=document.getElementById("unhide");
+    top.style.display = "none";
+    unhide.style.display = "block";
+  }
+  function showTop() {
+    var top=document.getElementById("top.html");
+    var unhide=document.getElementById("unhide");
+    top.style.display = "block";
+    unhide.style.display = "none";
+  }
+</script>

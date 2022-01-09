@@ -4,6 +4,7 @@ CHANGELOG
 v0.9pre
 -------
 
+- Arrow up and down for hiding the top area
 - Fix for [02 - Load Javascript Within Element](02_load-javascript/)
 
 v0.8
