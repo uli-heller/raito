@@ -73,6 +73,33 @@
         return baseUrl(href) + addPathToUrl(href);
     };
 
+    const isNavbar = (element_id) => {
+	var result = false;
+	if (config.navbar_element_ids) {
+	    result = config.navbar_element_ids.indexOf(element_id) >= 0;
+	}
+	return result;
+    };
+
+    const handleNavbar = (navbar_id) => {
+	const navbar = document.getElementById(navbar_id);
+	var navbar_uls = navbar.querySelectorAll("ul");
+	while (navbar_uls.length < 2) {
+	    const ul = document.createElement('ul');
+	    const li = document.createElement('li');
+	    ul.appendChild(li);
+	    navbar.appendChild(ul);
+	    navbar_uls = navbar.querySelectorAll("ul");
+	}
+	const navbar_clear = document.getElementsByClassName("clear");
+	if (navbar_clear.length <= 0) {
+	    const clear = document.createElement('div')
+	    clear.classList.add("clear");
+	    clear.style.clear = 'both';
+	    navbar.appendChild(clear);
+	}
+    }
+
     const renderMD = async (path) => {
         var append=".md";
         if (path.slice(-3) == ".md") append="";
@@ -121,27 +148,6 @@
                 checkbox.parentElement.parentElement.classList.add("checklist");
             });
 
-	// navbar
-	const navbar_id = config.navbar;
-	if (navbar_id) {
-	    const navbar = document.getElementById(navbar_id);
-	    var navbar_uls = navbar.querySelectorAll("ul");
-	    while (navbar_uls.length < 2) {
-		const ul = document.createElement('ul');
-		const li = document.createElement('li');
-		ul.appendChild(li);
-		navbar.appendChild(ul);
-		navbar_uls = navbar.querySelectorAll("ul");
-	    }
-	    const navbar_clear = document.getElementsByClassName("clear");
-	    if (navbar_clear.length <= 0) {
-		const clear = document.createElement('div')
-		clear.classList.add("clear");
-		clear.style.clear = 'both';
-		navbar.appendChild(clear);
-	    }
-	}
-
         document.title = (document.querySelectorAll("h1")[0]?.innerText || "") + " | " + config.name || "";
         document.body.classList.add("loaded");
 
@@ -169,6 +175,10 @@
         if (!elementHtml) return
 
         elementDiv.innerHTML = elementHtml;
+
+	if (isNavbar(element)) {
+	    handleNavbar(element)
+	}
     };
 
     window.onload = init;
