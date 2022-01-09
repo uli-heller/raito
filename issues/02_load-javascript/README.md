@@ -12,8 +12,8 @@ The javascript function within hide.html cannot be
 executed. Moving the function into index.html makes
 this work ok!
 
-First Trials
-------------
+First Try
+---------
 
 ### config-dp.js
 
