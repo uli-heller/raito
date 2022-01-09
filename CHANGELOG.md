@@ -1,8 +1,8 @@
 CHANGELOG
 =========
 
-v0.8pre
--------
+v0.8
+----
 
 - Added support right aligned navbar entries
 - Fixed left margin of navbar and footer
