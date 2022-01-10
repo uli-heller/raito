@@ -239,6 +239,14 @@ ul.checklist {
     clear: both;
 }
 
+#navbar-dp ul:first-of-type {
+    float: left;
+}
+
+#navbar-dp ul:last-of-type {
+    float: right;
+}
+
 #navbar-dp ul {
     display: flex;
     list-style: none;
@@ -249,20 +257,6 @@ ul.checklist {
     background: inherit;
     padding-left: 1em;
 }
-
-#navbar-dp ul:first-of-type {
-    float: left;
-}
-
-#navbar-dp ul:last-of-type {
-    float: right;
-}
-
-/*
-#navbar-dp .clear {
-    clear: both;
-}
-*/
 
 #navbar-dp li {
     margin: 1em 1em 1em 0em;
@@ -294,6 +288,22 @@ ul.checklist {
     background-color: var(--color-navbar-background);
     color:            var(--color-navbar-foreground);
     margin:           0;
+}
+
+#footer-dp h1 {
+    display: none;
+}
+
+#footer-dp .clear {
+    clear: both;
+}
+
+#footer-dp ul:first-of-type {
+    float: left;
+}
+
+#footer-dp ul:last-of-type {
+    float: right;
 }
 
 #footer-dp ul {
