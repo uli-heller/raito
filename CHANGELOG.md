@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+v0.10pre
+--------
+
+- No changes yet
+
 v0.9
 ----
 
