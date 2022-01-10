@@ -158,6 +158,39 @@
         return node.tagName === 'SCRIPT';
     }
 
+    /*
+     * x//y -> x/y
+     * /a/../ -> /
+     */
+    function normalizePath(path) {
+	var this_path = '';
+        var next_path = path;
+	while (this_path != next_path) {
+	    this_path = next_path;
+	    next_path = next_path.replace('//', '/');
+	    next_path = next_path.replace('/./', '/');
+	    next_path = next_path.replace(/\/[^\/]+\/\.\.\//, '/');
+	    next_path = next_path.replace(/\/[^\/]+\/\.\.$/, '/');
+	}
+	return next_path;
+    }
+
+  /*
+    var testPath = [
+	[ "/a/b/c",       "/a/b/c" ],
+	[ "/a/d/../b/c",  "/a/b/c" ],
+	[ "/a/b/./c",     "/a/b/c" ],
+	[ "//a//b//.//c", "/a/b/c" ],
+	[ "/a/b/c/d/../", "/a/b/c/" ],
+	[ "/a/b/c/d/..",  "/a/b/c/" ],
+    ];
+    for (var p in testPath) {
+      if (testPath[p][1] != normalizePath(testPath[p][0])) {
+	  alert(`${testPath[p][0]} - ${normalizePath(testPath[p][0])}`);
+      }
+    }
+  */
+
     const loadContent = async (hash) => {
         // Hash routing
         if (hash == '') hash = "/";
@@ -181,8 +214,8 @@
         document.body.classList.add("loaded");
 
         // Clean Hash
-        //hash = "#" + hash.replace(/(README$)/, '')
-        //window.location.replace(hash);
+        hash = "#" + normalizePath(hash);
+        window.location.replace(hash);
     };
 
     const loadElement = async (element, position) => {
