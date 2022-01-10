@@ -4,7 +4,8 @@ CHANGELOG
 v0.10pre
 --------
 
-- No changes yet
+- Fix for issue: [05 - Linking Error](/issues/05_linking-error/)
+- New issue: [05 - Linking Error](/issues/05_linking-error/)
 
 v0.9
 ----
@@ -13,7 +14,7 @@ v0.9
 - Add version number to footer-dp.md
 - Handle footer similar to navbar, added "${VERSION}" to footer
 - Arrow up and down for hiding the top area
-- Fix for [02 - Load Javascript Within Element](02_load-javascript/)
+- Fix for [02 - Load Javascript Within Element](/issues/02_load-javascript/)
 
 v0.8
 ----
