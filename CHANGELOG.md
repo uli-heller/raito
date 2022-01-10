@@ -1,8 +1,8 @@
 CHANGELOG
 =========
 
-v0.9pre
--------
+v0.9
+----
 
 - Add version number to index.html for loading styles etc
 - Add version number to footer-dp.md
