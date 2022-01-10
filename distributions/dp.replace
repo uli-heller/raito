@@ -5,3 +5,4 @@
 \\[::issues/README.md
 \\]::issues/README.md
 ([^)]*)::issues/README.md
+${VERSION}:${VERSION}:footer-dp.md

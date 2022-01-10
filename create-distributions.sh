@@ -28,13 +28,29 @@ mkdir -p "${TMPDIR}"
 
 mkdir "${TMPDIR}/raito-${VERSION}"
 
-(
-    cd "${D}"
-    tar cf - $(cat "${D}/distributions/common.list") $(cat "${D}/distributions/standard.list")
-)|(
-    cd "${TMPDIR}/raito-${VERSION}"
-    tar xf -
-    grep -v "^#" "${D}/distributions/standard.replace" | while read line; do
+# $1 ... replace
+prepareReplace () {
+    cut -d: -f1 "$1" >"${TMPDIR}/f1.txt"
+    cut -d: -f2 "$1" >"${TMPDIR}/f2.txt"
+    cut -d: -f3 "$1" >"${TMPDIR}/f3.txt"
+    sed -i -e 's/${VERSION}/'"${VERSION}/g" "${TMPDIR}/f2.txt"
+    paste -d: "${TMPDIR}/f1.txt" "${TMPDIR}/f2.txt" "${TMPDIR}/f3.txt"
+}
+
+# $1 ... standard oder dp
+create () {
+    BASE="raito"
+    test "$1" = "dp" && BASE="raito-dp"
+    prepareReplace "${D}/distributions/common.replace" >"${TMPDIR}/this.replace"
+    prepareReplace "${D}/distributions/$1.replace" >>"${TMPDIR}/this.replace"
+    (
+      cd "${D}"
+      tar cf - $(cat "${D}/distributions/common.list") $(cat "${D}/distributions/$1.list")
+    )|(
+      mkdir -p "${TMPDIR}/${BASE}-${VERSION}"
+      cd "${TMPDIR}/${BASE}-${VERSION}"
+      tar xf -      
+      grep -v "^#" "${TMPDIR}/this.replace" | while read line; do
 	SEARCH="$(echo "${line}"|cut -d "${SEPARATOR}" -f1)"
 	REPLACE="$(echo "${line}"|cut -d "${SEPARATOR}" -f2)"
 	FILES="$(echo "${line}"|cut -d "${SEPARATOR}" -f3)"
@@ -42,55 +58,24 @@ mkdir "${TMPDIR}/raito-${VERSION}"
 	for f in $(find ${FILES} -type f); do
 	    sed -i -e "s/${SEARCH}/${REPLACE}/g" "${f}"
 	done
-    done
-    for f in $(find ${FILES} -type f); do
-	sed -i -e 's/${VERSION}/'"${VERSION}/g" "${f}"
-    done
-)
-
-mkdir "${TMPDIR}/raito-dp-${VERSION}"
-
-(
-    cd "${D}"
-    tar cf - $(cat "${D}/distributions/common.list") $(cat "${D}/distributions/dp.list")
-)|(
-    cd "${TMPDIR}/raito-dp-${VERSION}"
-    tar xf -
-    grep -v "^#" "${D}/distributions/dp.replace" | while read line; do
-	SEARCH="$(echo "${line}"|cut -d "${SEPARATOR}" -f1)"
-	REPLACE="$(echo "${line}"|cut -d "${SEPARATOR}" -f2)"
-	FILES="$(echo "${line}"|cut -d "${SEPARATOR}" -f3)"
-	test -z "${FILES}" && FILES="."
-	for f in $(find ${FILES} -type f); do
-	    sed -i -e "s/${SEARCH}/${REPLACE}/g" "${f}"
-	done
-    done
-    for f in $(find ${FILES} -type f); do
-	sed -i -e 's/${VERSION}/'"${VERSION}/g" "${f}"
-    done
-)
+      done
+    )
+    SSH_SIG=
+    ( cd "${TMPDIR}"; tar cf - "${BASE}-${VERSION}")|xz -9 >"${BASE}-${VERSION}.tar.xz"
+    sha256sum "${BASE}-${VERSION}.tar.xz" >"${BASE}-${VERSION}.tar.xz.sha256"
+    test -s "${TMPDIR}/ssh.pub" && {
+	SSH_SIG=" and .ssh-sig"
+	ssh-keygen -q -Y sign -n file -f "${TMPDIR}/ssh.pub" <"${BASE}-${VERSION}.tar.xz" >"${BASE}-${VERSION}.tar.xz.ssh-sig"
+    }
+    echo "Created ${BASE}-${VERSION}.tar.xz and .sha256${SSH_SIG}"
+}
 
 test -n "${GITHUB_PUBKEY}" && {
     echo "${GITHUB_PUBKEY}" >"${TMPDIR}/ssh.pub"
 }
 
-SSH_SIG=
-( cd "${TMPDIR}"; tar cf - "raito-dp-${VERSION}")|xz -9 >"raito-dp-${VERSION}.tar.xz"
-sha256sum "raito-dp-${VERSION}.tar.xz" >"raito-dp-${VERSION}.tar.xz.sha256"
-test -s "${TMPDIR}/ssh.pub" && {
-    SSH_SIG=" and .ssh-sig"
-    ssh-keygen -q -Y sign -n file -f "${TMPDIR}/ssh.pub" <"raito-dp-${VERSION}.tar.xz" >"raito-dp-${VERSION}.tar.xz.ssh-sig"
-}
-echo "Created raito-dp-${VERSION}.tar.xz and .sha256${SSH_SIG}"
-
-SSH_SIG=
-( cd "${TMPDIR}"; tar cf - "raito-${VERSION}")|xz -9 >"raito-${VERSION}.tar.xz"
-sha256sum "raito-${VERSION}.tar.xz" >"raito-${VERSION}.tar.xz.sha256"
-test -s "${TMPDIR}/ssh.pub" && {
-    SSH_SIG=" and .ssh-sig"
-    ssh-keygen -q -Y sign -n file -f "${TMPDIR}/ssh.pub" <"raito-${VERSION}.tar.xz" >"raito-${VERSION}.tar.xz.ssh-sig"
-}
-echo "Created raito-${VERSION}.tar.xz and .sha256${SSH_SIG}"
+create standard
+create dp
 
 cleanUp
 exit "${RC}"
