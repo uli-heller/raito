@@ -206,5 +206,5 @@ Links And References
 - [StackOverflow: Can scripts be inserted with innerHTML?][001]
 - [StackOverflow: Executing "script" elements inserted with .innerHTML][002]
 
-[001]: https://stackoverflow.com/questions/2592092/executing-script-elements-inserted-with-innerhtml
-[002]: https://stackoverflow.com/questions/1197575/can-scripts-be-inserted-with-innerhtml
+[001]: https://stackoverflow.com/questions/1197575/can-scripts-be-inserted-with-innerhtml
+[002]: https://stackoverflow.com/questions/2592092/executing-script-elements-inserted-with-innerhtml
