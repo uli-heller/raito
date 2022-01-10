@@ -1,8 +1,8 @@
 CHANGELOG
 =========
 
-v0.10pre
---------
+v0.10
+-----
 
 - Fix for issue: [05 - Linking Error](/issues/05_linking-error/)
 - New issue: [05 - Linking Error](/issues/05_linking-error/)
