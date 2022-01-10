@@ -43,6 +43,9 @@ mkdir "${TMPDIR}/raito-${VERSION}"
 	    sed -i -e "s/${SEARCH}/${REPLACE}/g" "${f}"
 	done
     done
+    for f in $(find ${FILES} -type f); do
+	sed -i -e 's/${VERSION}/'"${VERSION}/g" "${f}"
+    done
 )
 
 mkdir "${TMPDIR}/raito-dp-${VERSION}"
@@ -61,6 +64,9 @@ mkdir "${TMPDIR}/raito-dp-${VERSION}"
 	for f in $(find ${FILES} -type f); do
 	    sed -i -e "s/${SEARCH}/${REPLACE}/g" "${f}"
 	done
+    done
+    for f in $(find ${FILES} -type f); do
+	sed -i -e 's/${VERSION}/'"${VERSION}/g" "${f}"
     done
 )
 
