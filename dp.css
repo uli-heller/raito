@@ -235,6 +235,10 @@ ul.checklist {
     display: none;
 }
 
+#navbar-dp .clear {
+    clear: both;
+}
+
 #navbar-dp ul {
     display: flex;
     list-style: none;
