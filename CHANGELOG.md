@@ -4,7 +4,7 @@ CHANGELOG
 v0.11pre
 --------
 
-- No changes yet
+- Updated marked.js from 4.0.9 to 4.0.10
 
 v0.10
 -----
